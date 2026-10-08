@@ -1,0 +1,5 @@
+# Build-Ergebnis, jederzeit per ps2exe aus dem Script neu erzeugbar
+*.exe
+
+# Verbindungsdateien enthalten Benutzername und interne Server-IP
+*.rdp
