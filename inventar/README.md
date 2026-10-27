@@ -19,3 +19,11 @@ Die App muss über **HTTPS** ausgeliefert werden (sonst ist die Verschlüsselung
 
 Als Home-Bildschirm-App funktioniert sie offline und iOS löscht die gespeicherten Daten nicht automatisch.
 Trotzdem regelmäßig ein Backup exportieren – das Master-Passwort ist nicht wiederherstellbar.
+
+## Standalone-Version (eine einzelne Datei)
+
+`Inventar.html` enthält die komplette App in einer Datei, ohne Internet und ohne Installation.
+Auf dem PC/Mac einfach per Doppelklick im Browser öffnen (Chrome, Edge, Firefox oder Safari).
+Die Daten bleiben verschlüsselt in genau diesem Browser auf genau diesem Rechner gespeichert.
+
+Nach Änderungen an `index.html` die Datei neu erzeugen: `python3 build-standalone.py`

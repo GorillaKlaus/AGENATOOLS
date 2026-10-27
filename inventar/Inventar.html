@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Inventar">
+<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Inventar</title>
+<style>
+:root {
+  --bg: #f2f2f7; --card: #ffffff; --text: #000000; --muted: #6c6c70; --line: #d8d8dc;
+  --accent: #007aff; --danger: #ff3b30; --ok: #34c759; --warn: #ff9500; --field: #f2f2f7;
+  --top: env(safe-area-inset-top); --bottom: env(safe-area-inset-bottom);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #000000; --card: #1c1c1e; --text: #ffffff; --muted: #98989f; --line: #38383a;
+    --accent: #0a84ff; --danger: #ff453a; --ok: #30d158; --warn: #ff9f0a; --field: #2c2c2e; }
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--text); font: 17px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, select, textarea { font: inherit; font-size: 17px; color: var(--text); background: var(--field); border: 0; border-radius: 10px; padding: 11px 12px; width: 100%; outline: none; -webkit-appearance: none; appearance: none; }
+textarea { min-height: 90px; resize: vertical; }
+select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px var(--accent); }
+.hidden { display: none !important; }
+
+/* Sperrbildschirm */
+#lock { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: calc(var(--top) + 24px) 24px calc(var(--bottom) + 24px); text-align: center; }
+#lock img { width: 84px; height: 84px; border-radius: 19px; margin-bottom: 16px; }
+#lock h1 { margin: 0 0 6px; font-size: 28px; }
+#lock p { color: var(--muted); margin: 0 0 24px; max-width: 340px; }
+#lock form { width: 100%; max-width: 340px; display: grid; gap: 10px; }
+.btn { display: block; width: 100%; padding: 13px; border-radius: 12px; background: var(--accent); color: #fff; font-weight: 600; text-align: center; }
+.btn.secondary { background: var(--card); color: var(--accent); }
+.btn.danger { background: var(--card); color: var(--danger); }
+.err { color: var(--danger); font-size: 15px; min-height: 20px; }
+
+/* Hauptansicht */
+#app { min-height: 100%; padding-bottom: calc(var(--bottom) + 70px); }
+header { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); padding: calc(var(--top) + 8px) 16px 8px; }
+.titlebar { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+.titlebar h1 { margin: 0; font-size: 32px; letter-spacing: -0.5px; }
+.iconbtn { width: 38px; height: 38px; border-radius: 19px; display: grid; place-items: center; color: var(--accent); }
+.iconbtn svg { width: 26px; height: 26px; }
+.search { margin-top: 8px; background: var(--card); }
+.chips { display: flex; gap: 8px; overflow-x: auto; margin-top: 10px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; padding: 6px 12px; border-radius: 16px; background: var(--card); font-size: 15px; }
+.chip.on { background: var(--accent); color: #fff; }
+main { padding: 4px 16px 16px; }
+.list { background: var(--card); border-radius: 12px; overflow: hidden; }
+.row { display: flex; align-items: center; gap: 12px; padding: 11px 14px; width: 100%; text-align: left; border-bottom: 0.5px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row:active { background: var(--field); }
+.row .ico { flex: none; width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; color: #fff; font-size: 17px; }
+.row .txt { flex: 1; min-width: 0; }
+.row .t1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+.row .t2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--muted); font-size: 15px; }
+.badge { flex: none; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 10px; background: var(--field); color: var(--muted); }
+.badge.ok { color: var(--ok); } .badge.warn { color: var(--warn); } .badge.bad { color: var(--danger); }
+.empty { text-align: center; color: var(--muted); padding: 48px 16px; }
+.section-title { color: var(--muted); font-size: 13px; text-transform: uppercase; margin: 22px 14px 7px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.stat { background: var(--card); border-radius: 12px; padding: 12px; }
+.stat b { display: block; font-size: 24px; }
+.stat span { color: var(--muted); font-size: 13px; }
+.note { color: var(--muted); font-size: 13px; margin: 8px 14px 0; }
+
+/* Tab-Leiste */
+nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: flex; background: color-mix(in srgb, var(--card) 90%, transparent); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border-top: 0.5px solid var(--line); padding-bottom: var(--bottom); }
+nav button { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 7px 0 5px; font-size: 11px; color: var(--muted); }
+nav button svg { width: 25px; height: 25px; }
+nav button.on { color: var(--accent); }
+
+/* Sheet (Detail / Bearbeiten) */
+#sheet { position: fixed; inset: 0; z-index: 10; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; animation: up .22s ease-out; }
+@keyframes up { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+.sheethead { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: calc(var(--top) + 6px) 8px 6px; background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.sheethead h2 { margin: 0; font-size: 17px; font-weight: 600; flex: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.textbtn { color: var(--accent); padding: 10px 8px; min-width: 80px; }
+.textbtn.r { text-align: right; font-weight: 600; }
+.sheetbody { padding: 8px 16px calc(var(--bottom) + 32px); }
+.group { background: var(--card); border-radius: 12px; overflow: hidden; margin-bottom: 18px; }
+.field { padding: 10px 14px; border-bottom: 0.5px solid var(--line); }
+.field:last-child { border-bottom: 0; }
+.field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 5px; }
+.inline { display: flex; gap: 6px; }
+.inline input { flex: 1; min-width: 0; }
+.inline button { flex: none; padding: 0 12px; border-radius: 10px; background: var(--field); color: var(--accent); font-size: 15px; }
+.kv { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 0.5px solid var(--line); }
+.kv:last-child { border-bottom: 0; }
+.kv .k { font-size: 13px; color: var(--muted); }
+.kv .v { word-break: break-word; white-space: pre-wrap; }
+.kv .v a { color: var(--accent); text-decoration: none; }
+.kv .kvtxt { flex: 1; min-width: 0; }
+.kv .act { flex: none; display: flex; gap: 4px; }
+.kv .act button { color: var(--accent); font-size: 14px; padding: 6px 8px; border-radius: 8px; background: var(--field); }
+.mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.meta { color: var(--muted); font-size: 13px; text-align: center; margin: 4px 0 18px; }
+.headline { text-align: center; margin: 6px 0 18px; }
+.headline .big { font-size: 22px; font-weight: 700; }
+.headline .sub { color: var(--muted); }
+
+#toast { position: fixed; left: 50%; bottom: calc(var(--bottom) + 84px); transform: translateX(-50%); z-index: 20; background: rgba(60,60,67,.92); color: #fff; padding: 9px 16px; border-radius: 18px; font-size: 15px; pointer-events: none; transition: opacity .2s; opacity: 0; }
+#toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div id="lock">
+  <img src="data:image/png;base64,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" alt="">
+  <h1>Inventar</h1>
+  <p id="lockText"></p>
+  <form id="lockForm" autocomplete="off">
+    <input id="pw1" type="password" placeholder="Master-Passwort" autocomplete="current-password" required>
+    <input id="pw2" type="password" placeholder="Passwort wiederholen" autocomplete="new-password" class="hidden">
+    <div class="err" id="lockErr"></div>
+    <button class="btn" id="lockBtn" type="submit">Entsperren</button>
+  </form>
+</div>
+
+<div id="app" class="hidden">
+  <header>
+    <div class="titlebar">
+      <h1 id="title"></h1>
+      <button class="iconbtn" id="addBtn" aria-label="Neu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div id="filters">
+      <input class="search" id="search" type="search" placeholder="Suchen" autocomplete="off">
+      <div class="chips" id="chips"></div>
+    </div>
+  </header>
+  <main id="main"></main>
+  <nav id="tabs"></nav>
+</div>
+
+<div id="sheet" class="hidden"></div>
+<div id="toast"></div>
+<datalist id="assignees"></datalist>
+<input type="file" id="importFile" accept=".json,application/json" class="hidden">
+
+<script>
+'use strict';
+
+/* ---------- Datenmodell ---------- */
+
+const STATUS = ['Ausgegeben', 'Auf Lager', 'Zurückgegeben', 'Defekt', 'Verloren', 'Ausgemustert'];
+const STATUS_CLASS = { 'Ausgegeben': 'ok', 'Auf Lager': '', 'Zurückgegeben': '', 'Defekt': 'warn', 'Verloren': 'bad', 'Ausgemustert': 'bad', 'Aktiv': 'ok', 'Gesperrt': 'warn', 'Gekündigt': 'bad' };
+const SIM_STATUS = ['Ausgegeben', 'Auf Lager', 'Aktiv', 'Gesperrt', 'Gekündigt', 'Verloren'];
+const HW_TYPES = ['Laptop', 'Smartphone', 'Tablet', 'Desktop-PC', 'Monitor', 'Drucker', 'Router / Netzwerk', 'Headset', 'Tastatur / Maus', 'Dockingstation', 'Schlüssel / Token', 'Sonstiges'];
+const HW_ICON = { 'Laptop': '💻', 'Smartphone': '📱', 'Tablet': '📱', 'Desktop-PC': '🖥️', 'Monitor': '🖥️', 'Drucker': '🖨️', 'Router / Netzwerk': '📡', 'Headset': '🎧', 'Tastatur / Maus': '⌨️', 'Dockingstation': '🔌', 'Schlüssel / Token': '🔑', 'Sonstiges': '📦' };
+
+const TYPES = {
+  logins: {
+    label: 'Logins', singular: 'Login', color: '#5856d6',
+    icon: () => '🔐',
+    fields: [
+      { k: 'title', l: 'Bezeichnung', req: true, ph: 'z. B. Agenda, Microsoft 365' },
+      { k: 'url', l: 'URL / Server', type: 'url', ph: 'https://…' },
+      { k: 'username', l: 'Benutzername', mono: true },
+      { k: 'password', l: 'Passwort', type: 'secret', gen: true },
+      { k: 'assignee', l: 'Ausgegeben an', type: 'person' },
+      { k: 'issuedAt', l: 'Ausgegeben am', type: 'date' },
+      { k: 'notes', l: 'Notizen', type: 'textarea' },
+    ],
+    primary: i => i.title,
+    secondary: i => [i.username, i.assignee].filter(Boolean).join(' · '),
+  },
+  hardware: {
+    label: 'Hardware', singular: 'Gerät', color: '#ff9500',
+    icon: i => HW_ICON[i.kind] || '📦',
+    fields: [
+      { k: 'kind', l: 'Gerätetyp', type: 'select', options: HW_TYPES },
+      { k: 'title', l: 'Modell / Bezeichnung', req: true, ph: 'z. B. ThinkPad T14 Gen 4' },
+      { k: 'serial', l: 'Seriennummer', mono: true },
+      { k: 'inventory', l: 'Inventarnummer', mono: true },
+      { k: 'imei', l: 'IMEI', mono: true, show: i => ['Smartphone', 'Tablet'].includes(i.kind) },
+      { k: 'status', l: 'Status', type: 'select', options: STATUS, def: 'Ausgegeben' },
+      { k: 'assignee', l: 'Ausgegeben an', type: 'person' },
+      { k: 'issuedAt', l: 'Ausgegeben am', type: 'date' },
+      { k: 'returnedAt', l: 'Zurück am', type: 'date' },
+      { k: 'devicePin', l: 'Geräte-PIN / Passwort', type: 'secret' },
+      { k: 'notes', l: 'Notizen / Zubehör', type: 'textarea' },
+    ],
+    primary: i => i.title,
+    secondary: i => [i.assignee, i.inventory || i.serial].filter(Boolean).join(' · '),
+    statusField: 'status',
+  },
+  sims: {
+    label: 'SIM-Karten', singular: 'SIM-Karte', color: '#34c759',
+    icon: () => '📶',
+    fields: [
+      { k: 'number', l: 'Rufnummer', type: 'tel', req: true, mono: true, ph: '+49 …' },
+      { k: 'provider', l: 'Anbieter', ph: 'z. B. Telekom, Vodafone, o2' },
+      { k: 'tariff', l: 'Tarif / Vertrag' },
+      { k: 'iccid', l: 'Kartennummer (ICCID)', mono: true },
+      { k: 'pin', l: 'PIN', type: 'secret' },
+      { k: 'puk', l: 'PUK', type: 'secret' },
+      { k: 'status', l: 'Status', type: 'select', options: SIM_STATUS, def: 'Ausgegeben' },
+      { k: 'assignee', l: 'Ausgegeben an', type: 'person' },
+      { k: 'deviceId', l: 'Steckt in Gerät', type: 'ref', ref: 'hardware' },
+      { k: 'issuedAt', l: 'Ausgegeben am', type: 'date' },
+      { k: 'notes', l: 'Notizen', type: 'textarea' },
+    ],
+    primary: i => i.number,
+    secondary: i => [i.provider, i.assignee].filter(Boolean).join(' · '),
+    statusField: 'status',
+  },
+};
+
+/* ---------- Hilfsfunktionen ---------- */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const fmtDate = d => d ? new Date(d + 'T00:00:00').toLocaleDateString('de-DE') : '';
+const fmtStamp = t => t ? new Date(t).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }) : '';
+const today = () => new Date().toISOString().slice(0, 10);
+
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function copy(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Kopiert');
+  } catch {
+    toast('Kopieren nicht möglich');
+  }
+}
+
+function genPassword(len = 20) {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!#$%&*+-=?@_';
+  const out = [];
+  const buf = new Uint8Array(1);
+  while (out.length < len) {
+    crypto.getRandomValues(buf);
+    if (buf[0] < 256 - (256 % chars.length)) out.push(chars[buf[0] % chars.length]);
+  }
+  return out.join('');
+}
+
+/* ---------- Verschlüsselung (AES-GCM, Schlüssel per PBKDF2 aus dem Master-Passwort) ---------- */
+
+const STORE_KEY = 'inventar.vault.v1';
+const PREFS_KEY = 'inventar.prefs';
+const ITERATIONS = 600000;
+const te = new TextEncoder(), td = new TextDecoder();
+
+function toB64(buf) {
+  const bytes = new Uint8Array(buf);
+  let s = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(s);
+}
+const fromB64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+async function deriveKey(password, salt, iterations = ITERATIONS) {
+  const base = await crypto.subtle.importKey('raw', te.encode(password), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+}
+
+async function encryptVault(key, salt, data) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, te.encode(JSON.stringify(data)));
+  return { app: 'inventar', v: 1, iter: ITERATIONS, salt: toB64(salt), iv: toB64(iv), ct: toB64(ct) };
+}
+
+async function decryptVault(key, blob) {
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fromB64(blob.iv) }, key, fromB64(blob.ct));
+  return JSON.parse(td.decode(pt));
+}
+
+async function openVault(password, blob) {
+  const salt = fromB64(blob.salt);
+  const key = await deriveKey(password, salt, blob.iter || ITERATIONS);
+  const data = await decryptVault(key, blob);
+  return { key, salt, data };
+}
+
+/* ---------- Zustand ---------- */
+
+let vault = null; // { key, salt, data } – nur im Arbeitsspeicher, solange entsperrt
+const ui = { tab: 'logins', q: '', status: '' };
+let prefs = { autolock: 5 };
+try { Object.assign(prefs, JSON.parse(localStorage.getItem(PREFS_KEY) || '{}')); } catch {}
+const savePrefs = () => localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
+
+function emptyData() { return { logins: [], hardware: [], sims: [] }; }
+
+function normalize(data) {
+  const d = emptyData();
+  for (const k of Object.keys(d)) if (Array.isArray(data?.[k])) d[k] = data[k];
+  return d;
+}
+
+async function persist() {
+  const blob = await encryptVault(vault.key, vault.salt, vault.data);
+  localStorage.setItem(STORE_KEY, JSON.stringify(blob));
+}
+
+function storedBlob() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)); } catch { return null; }
+}
+
+/* ---------- Sperrbildschirm ---------- */
+
+function showLock() {
+  vault = null;
+  closeSheet();
+  $('#app').classList.add('hidden');
+  $('#lock').classList.remove('hidden');
+  const setup = !storedBlob();
+  $('#lockText').textContent = setup
+    ? 'Lege ein Master-Passwort fest. Alle Daten werden damit verschlüsselt auf diesem Gerät gespeichert. Ohne das Passwort sind sie nicht wiederherstellbar.'
+    : 'Gib dein Master-Passwort ein.';
+  $('#pw1').autocomplete = setup ? 'new-password' : 'current-password';
+  $('#pw2').classList.toggle('hidden', !setup);
+  $('#lockBtn').textContent = setup ? 'Tresor anlegen' : 'Entsperren';
+  $('#pw1').value = $('#pw2').value = '';
+  $('#lockErr').textContent = '';
+}
+
+$('#lockForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const pw = $('#pw1').value;
+  const err = $('#lockErr');
+  const btn = $('#lockBtn');
+  const blob = storedBlob();
+  err.textContent = '';
+  if (!blob) {
+    if (pw.length < 8) { err.textContent = 'Mindestens 8 Zeichen.'; return; }
+    if (pw !== $('#pw2').value) { err.textContent = 'Passwörter stimmen nicht überein.'; return; }
+  }
+  btn.disabled = true;
+  const label = btn.textContent;
+  btn.textContent = 'Bitte warten …';
+  try {
+    if (blob) {
+      vault = await openVault(pw, blob);
+      vault.data = normalize(vault.data);
+    } else {
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      vault = { key: await deriveKey(pw, salt), salt, data: emptyData() };
+      await persist();
+      navigator.storage?.persist?.();
+    }
+    $('#lock').classList.add('hidden');
+    $('#app').classList.remove('hidden');
+    resetIdle();
+    render();
+  } catch {
+    vault = null;
+    err.textContent = 'Falsches Passwort.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = label;
+  }
+});
+
+/* Automatische Sperre bei Inaktivität und wenn die App länger im Hintergrund war */
+let idleTimer = null, hiddenAt = 0;
+function resetIdle() {
+  clearTimeout(idleTimer);
+  if (vault && prefs.autolock > 0) idleTimer = setTimeout(showLock, prefs.autolock * 60000);
+}
+['pointerdown', 'keydown', 'scroll'].forEach(ev => document.addEventListener(ev, resetIdle, { passive: true, capture: true }));
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) hiddenAt = Date.now();
+  else if (vault && prefs.autolock > 0 && Date.now() - hiddenAt > Math.min(prefs.autolock, 1) * 60000) showLock();
+});
+
+/* ---------- Hauptansicht ---------- */
+
+const TAB_ICONS = {
+  logins: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M17 6l3 3M15 8l2 2"/></svg>',
+  hardware: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg>',
+  sims: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="8" y="11" width="8" height="7" rx="1"/><path d="M12 11v7M8 14.5h8"/></svg>',
+  settings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+};
+
+function renderTabs() {
+  const tabs = [['logins', 'Logins'], ['hardware', 'Hardware'], ['sims', 'SIM-Karten'], ['settings', 'Einstellungen']];
+  $('#tabs').innerHTML = tabs.map(([k, l]) =>
+    `<button data-tab="${k}" class="${ui.tab === k ? 'on' : ''}">${TAB_ICONS[k]}${l}</button>`).join('');
+}
+
+$('#tabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-tab]');
+  if (!b) return;
+  if (ui.tab !== b.dataset.tab) { ui.tab = b.dataset.tab; ui.q = ''; ui.status = ''; $('#search').value = ''; }
+  render();
+  window.scrollTo(0, 0);
+});
+
+$('#search').addEventListener('input', e => { ui.q = e.target.value; renderList(); });
+$('#chips').addEventListener('click', e => {
+  const c = e.target.closest('[data-status]');
+  if (!c) return;
+  ui.status = ui.status === c.dataset.status ? '' : c.dataset.status;
+  renderChips();
+  renderList();
+});
+$('#addBtn').addEventListener('click', () => openEdit(ui.tab));
+
+function render() {
+  if (!vault) return;
+  renderTabs();
+  updateAssignees();
+  const settings = ui.tab === 'settings';
+  $('#title').textContent = settings ? 'Einstellungen' : TYPES[ui.tab].label;
+  $('#addBtn').classList.toggle('hidden', settings);
+  $('#filters').classList.toggle('hidden', settings);
+  if (settings) renderSettings();
+  else { renderChips(); renderList(); }
+}
+
+function renderChips() {
+  const t = TYPES[ui.tab];
+  if (!t.statusField) { $('#chips').innerHTML = ''; return; }
+  const counts = {};
+  for (const i of vault.data[ui.tab]) counts[i[t.statusField]] = (counts[i[t.statusField]] || 0) + 1;
+  $('#chips').innerHTML = Object.keys(counts).sort().map(s =>
+    `<button class="chip ${ui.status === s ? 'on' : ''}" data-status="${esc(s)}">${esc(s)} ${counts[s]}</button>`).join('');
+}
+
+function searchText(type, item) {
+  const t = TYPES[type];
+  const parts = t.fields.filter(f => f.type !== 'secret').map(f => f.type === 'ref' ? refLabel(f.ref, item[f.k]) : item[f.k]);
+  return parts.filter(Boolean).join(' ').toLowerCase();
+}
+
+function renderList() {
+  const type = ui.tab, t = TYPES[type];
+  const q = ui.q.trim().toLowerCase();
+  let items = vault.data[type].slice();
+  if (ui.status) items = items.filter(i => i[t.statusField] === ui.status);
+  if (q) items = items.filter(i => q.split(/\s+/).every(w => searchText(type, i).includes(w)));
+  items.sort((a, b) => String(t.primary(a)).localeCompare(String(t.primary(b)), 'de', { numeric: true }));
+
+  if (!vault.data[type].length) {
+    $('#main').innerHTML = `<div class="empty">Noch keine ${esc(t.label)}.<br><br><button class="btn" style="max-width:240px;margin:0 auto" onclick="openEdit('${type}')">${esc(t.singular)} hinzufügen</button></div>`;
+    return;
+  }
+  if (!items.length) { $('#main').innerHTML = '<div class="empty">Keine Treffer.</div>'; return; }
+  $('#main').innerHTML = '<div class="list">' + items.map(i => {
+    const st = t.statusField ? i[t.statusField] : '';
+    return `<button class="row" data-id="${esc(i.id)}">
+      <span class="ico" style="background:${t.color}">${t.icon(i)}</span>
+      <span class="txt"><div class="t1">${esc(t.primary(i))}</div><div class="t2">${esc(t.secondary(i)) || '&nbsp;'}</div></span>
+      ${st ? `<span class="badge ${STATUS_CLASS[st] || ''}">${esc(st)}</span>` : ''}
+    </button>`;
+  }).join('') + '</div>';
+}
+
+$('#main').addEventListener('click', e => {
+  const r = e.target.closest('.row[data-id]');
+  if (r) openDetail(ui.tab, r.dataset.id);
+});
+
+function updateAssignees() {
+  const names = new Set();
+  for (const k of Object.keys(TYPES)) for (const i of vault.data[k]) if (i.assignee) names.add(i.assignee.trim());
+  $('#assignees').innerHTML = [...names].sort((a, b) => a.localeCompare(b, 'de')).map(n => `<option value="${esc(n)}">`).join('');
+}
+
+function refLabel(type, id) {
+  const item = id && vault.data[type].find(i => i.id === id);
+  if (!item) return '';
+  const t = TYPES[type];
+  return [t.primary(item), item.inventory || item.serial].filter(Boolean).join(' – ');
+}
+
+/* ---------- Sheet: Details ---------- */
+
+function openSheet(html) {
+  const s = $('#sheet');
+  s.innerHTML = html;
+  s.classList.remove('hidden');
+  s.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+function closeSheet() {
+  $('#sheet').classList.add('hidden');
+  $('#sheet').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+function openDetail(type, id) {
+  const t = TYPES[type];
+  const item = vault.data[type].find(i => i.id === id);
+  if (!item) return;
+  const rows = t.fields.filter(f => item[f.k] && f.k !== 'title' && (!f.show || f.show(item))).map(f => {
+    const raw = item[f.k];
+    let val, actions = '';
+    if (f.type === 'secret') {
+      val = `<span class="mono" data-secret="${esc(f.k)}">••••••••</span>`;
+      actions = `<button data-reveal="${esc(f.k)}">Zeigen</button><button data-copy="${esc(f.k)}">Kopieren</button>`;
+    } else if (f.type === 'url') {
+      const href = /^[a-z]+:\/\//i.test(raw) ? raw : 'https://' + raw;
+      val = /^https?:\/\//i.test(href) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(raw)}</a>` : esc(raw);
+      actions = `<button data-copy="${esc(f.k)}">Kopieren</button>`;
+    } else if (f.type === 'tel') {
+      val = `<a class="mono" href="tel:${esc(raw.replace(/[^+\d]/g, ''))}">${esc(raw)}</a>`;
+      actions = `<button data-copy="${esc(f.k)}">Kopieren</button>`;
+    } else if (f.type === 'date') {
+      val = esc(fmtDate(raw));
+    } else if (f.type === 'ref') {
+      const label = refLabel(f.ref, raw);
+      if (!label) return '';
+      val = `<a href="#" data-goto="${esc(f.ref)}:${esc(raw)}">${esc(label)}</a>`;
+    } else if (f.type === 'textarea') {
+      val = esc(raw);
+    } else {
+      val = `<span class="${f.mono ? 'mono' : ''}">${esc(raw)}</span>`;
+      if (f.type !== 'select' && f.type !== 'person') actions = `<button data-copy="${esc(f.k)}">Kopieren</button>`;
+    }
+    return `<div class="kv"><div class="kvtxt"><div class="k">${esc(f.l)}</div><div class="v">${val}</div></div><div class="act">${actions}</div></div>`;
+  }).join('');
+
+  // Rückverweise: SIM-Karten, die in diesem Gerät stecken
+  let linked = '';
+  if (type === 'hardware') {
+    const sims = vault.data.sims.filter(s => s.deviceId === id);
+    if (sims.length) linked = `<div class="section-title">SIM-Karten in diesem Gerät</div><div class="group">` +
+      sims.map(s => `<div class="kv"><div class="kvtxt"><div class="v"><a href="#" data-goto="sims:${esc(s.id)}">${esc(s.number)}</a></div><div class="k">${esc([s.provider, s.status].filter(Boolean).join(' · '))}</div></div></div>`).join('') + '</div>';
+  }
+
+  const st = t.statusField ? item[t.statusField] : '';
+  openSheet(`
+    <div class="sheethead">
+      <button class="textbtn" data-close>‹ ${esc(t.label)}</button>
+      <h2></h2>
+      <button class="textbtn r" data-edit>Bearbeiten</button>
+    </div>
+    <div class="sheetbody">
+      <div class="headline">
+        <div class="big ${type === 'sims' ? 'mono' : ''}">${esc(t.primary(item))}</div>
+        ${st ? `<div><span class="badge ${STATUS_CLASS[st] || ''}">${esc(st)}</span></div>` : ''}
+      </div>
+      <div class="group">${rows || '<div class="kv"><div class="k">Keine weiteren Angaben</div></div>'}</div>
+      ${linked}
+      <div class="meta">Erstellt ${esc(fmtStamp(item.created))}${item.updated && item.updated !== item.created ? '<br>Geändert ' + esc(fmtStamp(item.updated)) : ''}</div>
+      <button class="btn secondary" data-dup>Duplizieren</button>
+      <div style="height:10px"></div>
+      <button class="btn danger" data-del>${esc(t.singular)} löschen</button>
+    </div>`);
+
+  const s = $('#sheet');
+  s.onclick = async e => {
+    const b = e.target.closest('button, a');
+    if (!b) return;
+    if (b.hasAttribute('data-close')) closeSheet();
+    else if (b.hasAttribute('data-edit')) openEdit(type, id);
+    else if (b.dataset.copy) copy(item[b.dataset.copy]);
+    else if (b.dataset.reveal) {
+      const span = s.querySelector(`[data-secret="${b.dataset.reveal}"]`);
+      const shown = span.dataset.shown === '1';
+      span.textContent = shown ? '••••••••' : item[b.dataset.reveal];
+      span.dataset.shown = shown ? '' : '1';
+      b.textContent = shown ? 'Zeigen' : 'Verbergen';
+    } else if (b.dataset.goto) {
+      e.preventDefault();
+      const [gt, gid] = b.dataset.goto.split(':');
+      openDetail(gt, gid);
+    } else if (b.hasAttribute('data-dup')) {
+      const copyItem = { ...item };
+      delete copyItem.id;
+      if (copyItem.title) copyItem.title += ' (Kopie)';
+      openEdit(type, null, copyItem);
+    } else if (b.hasAttribute('data-del')) {
+      if (!confirm(`„${t.primary(item)}“ wirklich löschen?`)) return;
+      vault.data[type] = vault.data[type].filter(i => i.id !== id);
+      if (type === 'hardware') vault.data.sims.forEach(si => { if (si.deviceId === id) si.deviceId = ''; });
+      await persist();
+      closeSheet();
+      render();
+      toast('Gelöscht');
+    }
+  };
+}
+
+/* ---------- Sheet: Bearbeiten ---------- */
+
+function fieldInput(f, v) {
+  const name = `name="${f.k}"`;
+  const ph = f.ph ? `placeholder="${esc(f.ph)}"` : '';
+  switch (f.type) {
+    case 'textarea': return `<textarea ${name} ${ph}>${esc(v)}</textarea>`;
+    case 'select': return `<select ${name}>${f.options.map(o => `<option ${o === v ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+    case 'date': return `<div class="inline"><input type="date" ${name} value="${esc(v)}"><button type="button" data-today="${f.k}">Heute</button></div>`;
+    case 'person': return `<input ${name} value="${esc(v)}" list="assignees" autocomplete="off" placeholder="Name">`;
+    case 'tel': return `<input type="tel" ${name} value="${esc(v)}" ${ph} autocomplete="off">`;
+    case 'url': return `<input type="text" inputmode="url" ${name} value="${esc(v)}" ${ph} autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off">`;
+    case 'ref': {
+      const opts = vault.data[f.ref].slice().sort((a, b) => TYPES[f.ref].primary(a).localeCompare(TYPES[f.ref].primary(b), 'de'));
+      return `<select ${name}><option value="">– keins –</option>${opts.map(o => `<option value="${esc(o.id)}" ${o.id === v ? 'selected' : ''}>${esc(refLabel(f.ref, o.id))}</option>`).join('')}</select>`;
+    }
+    case 'secret': return `<div class="inline"><input type="password" ${name} value="${esc(v)}" class="mono" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off"><button type="button" data-toggle="${f.k}">👁</button>${f.gen ? `<button type="button" data-gen="${f.k}">Generieren</button>` : ''}</div>`;
+    default: return `<input type="text" ${name} value="${esc(v)}" ${ph} ${f.mono ? 'class="mono" autocapitalize="off" autocorrect="off" spellcheck="false"' : ''} autocomplete="off">`;
+  }
+}
+
+function openEdit(type, id = null, preset = null) {
+  const t = TYPES[type];
+  const existing = id ? vault.data[type].find(i => i.id === id) : null;
+  const item = existing || preset || {};
+  const fieldsHtml = t.fields.map(f => {
+    let v = item[f.k];
+    if (v == null) v = f.def ?? (f.type === 'select' ? f.options[0] : '');
+    const hidden = f.show && !f.show(item) ? 'hidden' : '';
+    return `<div class="field ${hidden}" data-field="${f.k}"><label>${esc(f.l)}${f.req ? ' *' : ''}</label>${fieldInput(f, v)}</div>`;
+  }).join('');
+
+  openSheet(`
+    <form id="editForm" autocomplete="off">
+      <div class="sheethead">
+        <button type="button" class="textbtn" data-cancel>Abbrechen</button>
+        <h2>${existing ? 'Bearbeiten' : esc(t.singular) + ' hinzufügen'}</h2>
+        <button type="submit" class="textbtn r">Sichern</button>
+      </div>
+      <div class="sheetbody"><div class="group">${fieldsHtml}</div></div>
+    </form>`);
+
+  const form = $('#editForm');
+  const current = () => Object.fromEntries(t.fields.map(f => [f.k, form.elements[f.k].value.trim()]));
+  const refreshVisibility = () => {
+    const vals = current();
+    t.fields.forEach(f => { if (f.show) form.querySelector(`[data-field="${f.k}"]`).classList.toggle('hidden', !f.show(vals)); });
+  };
+  form.addEventListener('change', refreshVisibility);
+
+  form.onclick = e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.hasAttribute('data-cancel')) { existing ? openDetail(type, id) : closeSheet(); }
+    else if (b.dataset.today) form.elements[b.dataset.today].value = today();
+    else if (b.dataset.toggle) { const inp = form.elements[b.dataset.toggle]; inp.type = inp.type === 'password' ? 'text' : 'password'; }
+    else if (b.dataset.gen) {
+      const inp = form.elements[b.dataset.gen];
+      if (inp.value && !confirm('Vorhandenes Passwort ersetzen?')) return;
+      inp.value = genPassword();
+      inp.type = 'text';
+    }
+  };
+
+  form.onsubmit = async e => {
+    e.preventDefault();
+    const vals = current();
+    const missing = t.fields.find(f => f.req && !vals[f.k]);
+    if (missing) { toast(`${missing.l} fehlt`); form.elements[missing.k].focus(); return; }
+    t.fields.forEach(f => { if (f.show && !f.show(vals)) vals[f.k] = ''; });
+    const now = Date.now();
+    let saved;
+    if (existing) {
+      Object.assign(existing, vals, { updated: now });
+      saved = existing;
+    } else {
+      saved = { id: uid(), ...vals, created: now, updated: now };
+      vault.data[type].push(saved);
+    }
+    await persist();
+    render();
+    openDetail(type, saved.id);
+    toast('Gesichert');
+  };
+
+  if (!existing) setTimeout(() => form.querySelector('input:not([type=date]), select')?.focus(), 250);
+}
+
+/* ---------- Einstellungen ---------- */
+
+function renderSettings() {
+  const d = vault.data;
+  const issued = d.hardware.filter(h => h.status === 'Ausgegeben').length;
+  const people = new Set();
+  for (const k of Object.keys(TYPES)) for (const i of d[k]) if (i.assignee) people.add(i.assignee.trim());
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+
+  $('#main').innerHTML = `
+    <div class="stats">
+      <div class="stat"><b>${d.logins.length}</b><span>Logins</span></div>
+      <div class="stat"><b>${d.hardware.length}</b><span>Geräte (${issued} ausg.)</span></div>
+      <div class="stat"><b>${d.sims.length}</b><span>SIM-Karten</span></div>
+    </div>
+
+    <div class="section-title">Personen</div>
+    <div class="list">${[...people].sort((a, b) => a.localeCompare(b, 'de')).map(p => {
+      const n = Object.keys(TYPES).reduce((s, k) => s + d[k].filter(i => (i.assignee || '').trim() === p).length, 0);
+      return `<button class="row" data-person="${esc(p)}"><span class="txt"><div class="t1">${esc(p)}</div></span><span class="badge">${n}</span></button>`;
+    }).join('') || '<div class="row"><span class="txt t2">Noch niemandem etwas ausgegeben.</span></div>'}</div>
+
+    <div class="section-title">Sicherheit</div>
+    <div class="group">
+      <div class="field"><label>Automatisch sperren nach</label>
+        <select id="autolock">${[[1, '1 Minute'], [5, '5 Minuten'], [15, '15 Minuten'], [60, '1 Stunde'], [0, 'Nie']].map(([v, l]) => `<option value="${v}" ${prefs.autolock === v ? 'selected' : ''}>${l}</option>`).join('')}</select>
+      </div>
+    </div>
+    <button class="btn secondary" id="lockNow">Jetzt sperren</button>
+    <div style="height:10px"></div>
+    <button class="btn secondary" id="changePw">Master-Passwort ändern</button>
+
+    <div class="section-title">Datensicherung</div>
+    <button class="btn secondary" id="exportBtn">Backup exportieren</button>
+    <div style="height:10px"></div>
+    <button class="btn secondary" id="importBtn">Backup importieren</button>
+    <p class="note">Das Backup ist mit deinem Master-Passwort verschlüsselt. Speichere es regelmäßig, z. B. in der Dateien-App oder iCloud Drive – wird die App gelöscht, sind sonst auch die Daten weg.</p>
+
+    ${standalone ? '' : `<div class="section-title">Installieren</div><p class="note" style="margin-top:0">In Safari auf <b>Teilen</b> → <b>Zum Home-Bildschirm</b> tippen. Dann startet Inventar wie eine App, funktioniert offline und iOS löscht die Daten nicht automatisch.</p>`}
+
+    <div class="section-title">Gefahrenzone</div>
+    <button class="btn danger" id="wipeBtn">Alle Daten löschen</button>
+  `;
+
+  $('#autolock').onchange = e => { prefs.autolock = Number(e.target.value); savePrefs(); resetIdle(); };
+  $('#lockNow').onclick = showLock;
+  $('#changePw').onclick = changePassword;
+  $('#exportBtn').onclick = exportBackup;
+  $('#importBtn').onclick = () => $('#importFile').click();
+  $('#wipeBtn').onclick = () => {
+    if (!confirm('Wirklich ALLE Daten auf diesem Gerät löschen?')) return;
+    if (prompt('Zur Bestätigung LÖSCHEN eingeben') !== 'LÖSCHEN') return;
+    localStorage.removeItem(STORE_KEY);
+    showLock();
+  };
+  $('#main').querySelectorAll('[data-person]').forEach(b => b.onclick = () => openPerson(b.dataset.person));
+}
+
+function openPerson(name) {
+  const groups = Object.keys(TYPES).map(k => {
+    const t = TYPES[k];
+    const items = vault.data[k].filter(i => (i.assignee || '').trim() === name);
+    if (!items.length) return '';
+    return `<div class="section-title">${esc(t.label)}</div><div class="list">` + items.map(i => {
+      const st = t.statusField ? i[t.statusField] : '';
+      return `<button class="row" data-goto="${k}:${esc(i.id)}"><span class="ico" style="background:${t.color}">${t.icon(i)}</span><span class="txt"><div class="t1">${esc(t.primary(i))}</div><div class="t2">${esc(t.secondary(i)) || '&nbsp;'}</div></span>${st ? `<span class="badge ${STATUS_CLASS[st] || ''}">${esc(st)}</span>` : ''}</button>`;
+    }).join('') + '</div>';
+  }).join('');
+  openSheet(`
+    <div class="sheethead"><button class="textbtn" data-close>‹ Zurück</button><h2>${esc(name)}</h2><span class="textbtn"></span></div>
+    <div class="sheetbody">${groups}</div>`);
+  $('#sheet').onclick = e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.hasAttribute('data-close')) closeSheet();
+    else if (b.dataset.goto) { const [gt, gid] = b.dataset.goto.split(':'); openDetail(gt, gid); }
+  };
+}
+
+async function changePassword() {
+  const old = prompt('Aktuelles Master-Passwort:');
+  if (old == null) return;
+  try { await openVault(old, storedBlob()); } catch { alert('Falsches Passwort.'); return; }
+  const pw = prompt('Neues Master-Passwort (mind. 8 Zeichen):');
+  if (pw == null) return;
+  if (pw.length < 8) { alert('Mindestens 8 Zeichen.'); return; }
+  if (prompt('Neues Passwort wiederholen:') !== pw) { alert('Passwörter stimmen nicht überein.'); return; }
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  vault.key = await deriveKey(pw, salt);
+  vault.salt = salt;
+  await persist();
+  toast('Passwort geändert');
+}
+
+async function exportBackup() {
+  const blob = await encryptVault(vault.key, vault.salt, { ...vault.data, exportedAt: Date.now() });
+  const name = `inventar-backup-${today()}.json`;
+  const file = new File([JSON.stringify(blob)], name, { type: 'application/json' });
+  if (navigator.canShare?.({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: name }); return; }
+    catch (e) { if (e.name === 'AbortError') return; }
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(file);
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+}
+
+$('#importFile').addEventListener('change', async e => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  let blob;
+  try { blob = JSON.parse(await file.text()); if (blob.app !== 'inventar') throw 0; }
+  catch { alert('Das ist keine gültige Inventar-Backup-Datei.'); return; }
+  const pw = prompt('Passwort, mit dem das Backup erstellt wurde:');
+  if (pw == null) return;
+  let data;
+  try { data = (await openVault(pw, blob)).data; } catch { alert('Falsches Passwort für dieses Backup.'); return; }
+  data = normalize(data);
+  const counts = `${data.logins.length} Logins, ${data.hardware.length} Geräte, ${data.sims.length} SIM-Karten`;
+  if (!confirm(`Backup enthält ${counts}.\n\nAktuelle Daten werden dadurch ERSETZT. Fortfahren?`)) return;
+  vault.data = data;
+  await persist();
+  render();
+  toast('Backup importiert');
+});
+
+/* ---------- Start ---------- */
+
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js');
+if (!window.isSecureContext || !crypto.subtle) {
+  $('#lockText').textContent = 'Diese App muss über HTTPS geöffnet werden (Verschlüsselung nicht verfügbar).';
+  $('#lockForm').classList.add('hidden');
+} else {
+  showLock();
+}
+</script>
+</body>
+</html>
